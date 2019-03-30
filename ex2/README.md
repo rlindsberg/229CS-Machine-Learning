@@ -9,3 +9,11 @@ Logistic Regression (classification algoritsm)
 Sigmoid/logistic function
 htheta(x)=g(theta.T*x)
 g(z)= 1/(1+e^(-z))
+
+3.6
+Optimization algorithsm
+Took Andrew a decade to understand what they do...
+More advanced algorithsms:
+Conjugate gradient
+BFGS
+L-BFGS
