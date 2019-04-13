@@ -7,8 +7,8 @@ function [J, grad] = costFunction(theta, X, y)
 % Initialize some useful values
 m = length(y); % number of training examples
 
-% You need to return the following variables correctly 
-J = 0;
+% You need to return the following variables correctly
+% J = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -21,10 +21,18 @@ grad = zeros(size(theta));
 %
 
 
+% hθ(x) = g(θ.transpose * x) = g(z)
+% X is 100 x 3, theta is 3 x 1
+z = X * theta;
+gOfz = sigmoid(z);
 
+costSum = sum(-y .* log(gOfz) - (1 - y) .* log(1 - gOfz));
+J = costSum ./ m;
 
-
-
+% partiel dir
+% (gOfz - y) is 100 x 1
+partSum = sum(X .* (gOfz - y) );
+grad = partSum ./ m;
 
 
 % =============================================================
