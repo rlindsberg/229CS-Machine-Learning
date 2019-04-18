@@ -51,12 +51,14 @@ X = [ones(m, 1) X];
 
 
 
+% initial_theta is a row vector, provided to fmincg to update all_theta
 initial_theta = zeros(n + 1, 1);
 options = optimset('GradObj', 'on', 'MaxIter', 50);
 
 % Θ is a K x (N+1) matrix, where K is size of data set and N is number of features
 for c = 1:num_labels % update every row of Θ
   % digit names (y == c) will return a vector with boolean values 0 or 1
+  % fmincg works similarly to fminunc, but is more more efficient for dealing with a large number of parameters.
   % update the whole row
   all_theta(c, :) =  fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), initial_theta, options);
 
