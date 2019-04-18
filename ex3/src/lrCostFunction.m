@@ -44,7 +44,7 @@ z = X * theta;
 gOfz = sigmoid(z);
 
 costSum = sum( -y .* log(gOfz) - (1 - y) .* log(1 - gOfz) );
-regSum = sum( theta(2:length(theta)).^2 )
+regSum = sum( theta(2:end).^2 )
 J = costSum ./ m + ( lambda / (2 * m) * regSum ) ;
 
 % partiel dir
@@ -53,7 +53,7 @@ partSum = sum(X .* (gOfz - y) );
 grad = partSum ./ m;
 
 % regularization from θ(1), all rows, from column 2
-grad(: ,2:length(grad)) = grad(: ,2:length(grad)) + ( lambda / m ) * theta( 2:length(theta) )';
+grad(: ,2:end) = grad(: ,2:end) + ( lambda / m ) * theta( 2:end )';
 
 
 
