@@ -33,6 +33,8 @@ z_superscript_3 = a_superscript_2 * Theta2';
 % a_superscript_3
 pred = sigmoid(z_superscript_3);
 
+[~, p] = max(pred, [], 2)
+
 
 
 
