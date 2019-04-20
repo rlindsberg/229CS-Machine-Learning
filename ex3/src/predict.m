@@ -28,6 +28,9 @@ X = [ones(m, 1) X];
 a_superscript_1 = X;
 z_superscript_2 = X * Theta1';
 a_superscript_2 = sigmoid(z_superscript_2);
+z_superscript_3 = a_superscript_2 * Theta2';
+% a_superscript_3
+pred = sigmoid(z_superscript_3);
 
 
 
