@@ -2,9 +2,9 @@
 
 %  Instructions
 %  ------------
-% 
+%
 %  This file contains code that helps you get started on the
-%  linear exercise. You will need to complete the following functions 
+%  linear exercise. You will need to complete the following functions
 %  in this exericse:
 %
 %     lrCostFunction.m (logistic regression cost function)
@@ -22,11 +22,11 @@ clear ; close all; clc
 %% Setup the parameters you will use for this exercise
 input_layer_size  = 400;  % 20x20 Input Images of Digits
 hidden_layer_size = 25;   % 25 hidden units
-num_labels = 10;          % 10 labels, from 1 to 10   
+num_labels = 10;          % 10 labels, from 1 to 10
                           % (note that we have mapped "0" to label 10)
 
 %% =========== Part 1: Loading and Visualizing Data =============
-%  We start the exercise by first loading and visualizing the dataset. 
+%  We start the exercise by first loading and visualizing the dataset.
 %  You will be working with a dataset that contains handwritten digits.
 %
 
@@ -46,13 +46,18 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% ================ Part 2: Loading Pameters ================
-% In this part of the exercise, we load some pre-initialized 
+% In this part of the exercise, we load some pre-initialized
 % neural network parameters.
 
 fprintf('\nLoading Saved Neural Network Parameters ...\n')
 
 % Load the weights into variables Theta1 and Theta2
 load('ex3weights.mat');
+% The matrices Theta1 and Theta2 will now be in your Octave
+% environment
+% Input is 400 x 1, thus Theta1 has size 25 x 401 (incl. bias)
+% Output from the hidden layer is 25, thus Theta2 has size 10 x 26 (incl. bias)
+
 
 %% ================= Part 3: Implement Predict =================
 %  After training the neural network, we would like to use it to predict
@@ -74,17 +79,16 @@ pause;
 rp = randperm(m);
 
 for i = 1:m
-    % Display 
+    % Display
     fprintf('\nDisplaying Example Image\n');
     displayData(X(rp(i), :));
 
     pred = predict(Theta1, Theta2, X(rp(i),:));
     fprintf('\nNeural Network Prediction: %d (digit %d)\n', pred, mod(pred, 10));
-    
+
     % Pause with quit option
     s = input('Paused - press enter to continue, q to exit:','s');
     if s == 'q'
       break
     end
 end
-
