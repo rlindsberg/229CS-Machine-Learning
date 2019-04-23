@@ -103,6 +103,35 @@ lambda / (2 * m) * regSum
 J = 1/m * costSum + ( lambda / (2 * m) * regSum );
 
 
+% Backpropagation
+for t=1:m
+    % step 1, feedforward
+    x = X(t, :);
+    % Add bias to the X data matrix
+    x = [1 x]; % another way x = [1; X(t,:)'];
+    % layer 1
+    a_superscript_1 = x;
+
+    % layer 2, hidden
+    z_superscript_2 = a_superscript_1 * Theta1'; % size is 1x25
+    a_superscript_2 = sigmoid(z_superscript_2); % size is 1x25
+    a_superscript_2 = [1 a_superscript_2]; % size is 1x26
+
+    % layer 3
+    z_superscript_3 = a_superscript_2 * Theta2'; % 1x26 * 26x10 = 1x10
+    a_superscript_3 = sigmoid(z_superscript_3);
+    % output
+    h_theta = a_superscript_3;
+
+    % step 2, calculate δ
+    % create labels [1:10] (i.e. 1    2    3    4    5    6    7    8    9   10)
+    y_subscript_k = [1 : num_labels] == y(t); % t th data
+    delta_superscript_3 = a_superscript_3 - y_subscript_k;
+end
+
+
+
+
 % -------------------------------------------------------------
 
 % =========================================================================
