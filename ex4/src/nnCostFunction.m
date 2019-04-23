@@ -92,12 +92,15 @@ end
 % compute cost
 % sum(matrix) sums up all rows
 
-fprintf('cost is: ')
 costSum = sum(
             sum( -y_10x5000' .* log(h_theta) - (1 - y_10x5000') .* log(1 - h_theta) )
           );
 
-J = 1/m * costSum;
+% Regularization for a 3-layer-nn
+regSum = sum(sum( Theta1(:,2:end).^2 )) + sum(sum( Theta2(:,2:end).^2 ));
+fprintf('reg cost is: ')
+lambda / (2 * m) * regSum
+J = 1/m * costSum + ( lambda / (2 * m) * regSum );
 
 
 % -------------------------------------------------------------
