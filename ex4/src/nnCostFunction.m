@@ -77,16 +77,27 @@ a_superscript_2 = [ones(m, 1) a_superscript_2];
 % layer 3
 z_superscript_3 = a_superscript_2 * Theta2';
 a_superscript_3 = sigmoid(z_superscript_3);
+% output
+h_theta = a_superscript_3;
 
 % remap y (5000x1 vector) to y (10x5000 matrix)
 % init y_10x5000
-y_10x5000 = zeros(num_labels, m) % m = size(X, 1) = size of the training set
+y_10x5000 = zeros(num_labels, m); % m = size(X, 1) = size of the training set
 
 for i=1:m
     % y(i) is the label, set 1 at the corresponding index in the i th column
-    y_10x5000( y(i), i) = 1
+    y_10x5000( y(i), i) = 1;
 end
 
+% compute cost
+% sum(matrix) sums up all rows
+
+fprintf('cost is: ')
+costSum = sum(
+            sum( -y_10x5000 * log(h_theta) - (1 - y_10x5000) * log(1 - h_theta) )
+          );
+
+J = 1/m * costSum
 
 
 % -------------------------------------------------------------
