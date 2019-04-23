@@ -82,7 +82,7 @@ a_superscript_3 = sigmoid(z_superscript_3);
 % init y_10x5000
 y_10x5000 = zeros(num_labels, m) % m = size(X, 1) = size of the training set
 
-for i=1:end
+for i=1:m
     % y(i) is the label, set 1 at the corresponding index in the i th column
     y_10x5000( y(i), i) = 1
 end
