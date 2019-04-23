@@ -72,7 +72,7 @@ a_superscript_1 = X;
 % layer 2, hidden
 z_superscript_2 = X * Theta1';
 a_superscript_2 = sigmoid(z_superscript_2);
-a_superscript_2 = [ones(m, 1) a_superscript_2];
+a_superscript_2 = [ones(size(a_superscript_2, 1), 1) a_superscript_2];
 
 % layer 3
 z_superscript_3 = a_superscript_2 * Theta2';
@@ -94,10 +94,10 @@ end
 
 fprintf('cost is: ')
 costSum = sum(
-            sum( -y_10x5000 * log(h_theta) - (1 - y_10x5000) * log(1 - h_theta) )
+            sum( -y_10x5000' .* log(h_theta) - (1 - y_10x5000') .* log(1 - h_theta) )
           );
 
-J = 1/m * costSum
+J = 1/m * costSum;
 
 
 % -------------------------------------------------------------
