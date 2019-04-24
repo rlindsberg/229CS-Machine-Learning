@@ -104,6 +104,10 @@ J = 1/m * costSum + ( lambda / (2 * m) * regSum );
 
 
 % Backpropagation
+% some declaration
+delta_acc_superscript_1 = 0;
+delta_acc_superscript_2 = 0;
+
 for t=1:m
     % step 1, feedforward
     x = X(t, :);
@@ -127,6 +131,30 @@ for t=1:m
     % create labels [1:10] (i.e. 1    2    3    4    5    6    7    8    9   10)
     y_subscript_k = [1 : num_labels] == y(t); % t th data
     delta_superscript_3 = a_superscript_3 - y_subscript_k;
+
+    % step 3, for the hidden layer, l == 2
+    delta_superscript_2 = delta_superscript_3 * Theta2 .*  [1 sigmoidGradient(z_superscript_2)]; % 1x26 .* 1x(1+25)
+
+    % step 4, accumulate the gradient
+    % !!!!!!
+    delta_superscript_2 = delta_superscript_2(2 : end); % remove delta_superscript_2_subscript_0, size is now 1x25
+    % !!!!!!
+
+    delta_acc_superscript_2 = delta_acc_superscript_2 + delta_superscript_3' * a_superscript_2;
+    delta_acc_superscript_1 = delta_acc_superscript_1 + delta_superscript_2' * a_superscript_1;
+    % size(delta_acc_superscript_1) 26x401
+    % size(delta_acc_superscript_2) 10x26
+    % size(delta_superscript_2) 1x26
+    % size(delta_superscript_3) 1x10
+    % size(a_superscript_2) 1x26
+    % size(a_superscript_1) 1x401
+
+    % step 5, obtain the gradient for the neural network cost function
+    Theta1_grad = 1/m * delta_acc_superscript_1;
+    Theta2_grad = 1/m * delta_acc_superscript_2;
+    % size(Theta1_grad) 26x401
+    % size(Theta2_grad) 10x26
+
 end
 
 
