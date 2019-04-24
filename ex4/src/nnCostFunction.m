@@ -107,8 +107,8 @@ J = 1/m * costSum + ( lambda / (2 * m) * regSum );
 for t=1:m
     % step 1, feedforward
     x = X(t, :);
-    % Add bias to the X data matrix
-    x = [1 x]; % another way x = [1; X(t,:)'];
+    % % Add bias to the X data matrix
+    % x = [1 x]; % another way x = [1; X(t,:)'];
     % layer 1
     a_superscript_1 = x;
 
