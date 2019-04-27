@@ -59,5 +59,5 @@ function out = output(partId, auxstring)
         validationCurve(X, y, Xval, yval);
     out = sprintf('%0.5f ', ...
         [lambda_vec(:); error_train(:); error_val(:)]);
-  end 
+  end
 end
