@@ -21,9 +21,9 @@ grad = zeros(size(theta));
 
 
 
-% theta0 + theta1 * x
-costSum = sum( (X * theta - y).^2 )
-regSum = sum( theta(2) ) % do not regularize theta_subscript_0, i.e. theta(1)
+h_subscript_theta = X * theta;
+costSum = sum( (h_subscript_theta - y).^2 )
+regSum = sum( theta(2:end).^2 ) % do not regularize theta_subscript_0, i.e. theta(1)
 
 J = 1/(2 * m) * costSum + ( lambda / (2 * m) * regSum )
 
