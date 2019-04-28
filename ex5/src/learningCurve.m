@@ -54,7 +54,29 @@ error_val   = zeros(m, 1);
 % ---------------------- Sample Solution ----------------------
 
 
+% sweep training set size from 1 to m
+for n=1:m
+    % Cost, training set
+    % make training set
+    X_subscript_train = X(1:n, :);
+    y_subscript_train = y(1:n);
 
+    % train and compute theta
+    theta_subscript_train = trainLinearReg(X_subscript_train, y_subscript_train, lambda);
+
+    % compute cost
+    JAndGrad_subscript_train = linearRegCostFunction(X_subscript_train, y_subscript_train, theta_subscript_train, 0)
+    J_subscript_train = JAndGrad_subscript_train(1);
+    error_train(n) = J_subscript_train;
+
+    % Cost, cv set
+    % test trained theta
+    JAndGrad_subscript_cv = linearRegCostFunction(Xval, yval, theta_subscript_cv, 0)
+    J_subscript_cv = JAndGrad_subscript_cv(1);
+    error_val(n) = J_subscript_cv;
+
+
+end
 
 
 
