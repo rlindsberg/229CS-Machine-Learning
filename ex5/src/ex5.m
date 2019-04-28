@@ -39,7 +39,7 @@ plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 xlabel('Change in water level (x)');
 ylabel('Water flowing out of the dam (y)');
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 1: Loading and Visualizing Data. Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 2: Regularized Linear Regression Cost =============
@@ -53,7 +53,7 @@ J = linearRegCostFunction([ones(m, 1) X], y, theta, 1);
 fprintf(['Cost at theta = [1 ; 1]: %f '...
          '\n(this value should be about 303.993192)\n'], J);
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 2: Regularized Linear Regression Cost. Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 3: Regularized Linear Regression Gradient =============
@@ -68,7 +68,7 @@ fprintf(['Gradient at theta = [1 ; 1]:  [%f; %f] '...
          '\n(this value should be about [-15.303016; 598.250744])\n'], ...
          grad(1), grad(2));
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 3: Regularized Linear Regression Gradient. Program paused. Press enter to continue.\n');
 pause;
 
 
@@ -93,7 +93,7 @@ hold on;
 plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
 hold off;
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 4: Train Linear Regression. Program paused. Press enter to continue.\n');
 pause;
 
 
@@ -122,7 +122,7 @@ for i = 1:m
     fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
 end
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 5: Learning Curve for Linear Regression. Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 6: Feature Mapping for Polynomial Regression =============
@@ -152,7 +152,7 @@ X_poly_val = [ones(size(X_poly_val, 1), 1), X_poly_val];           % Add Ones
 fprintf('Normalized Training Example 1:\n');
 fprintf('  %f  \n', X_poly(1, :));
 
-fprintf('\nProgram paused. Press enter to continue.\n');
+fprintf('\n Part 6: Feature Mapping for Polynomial Regression. Program paused. Press enter to continue.\n');
 pause;
 
 
@@ -192,7 +192,7 @@ for i = 1:m
     fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
 end
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 7: Learning Curve for Polynomial Regression. Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 8: Validation for Selecting Lambda =============
@@ -216,5 +216,5 @@ for i = 1:length(lambda_vec)
             lambda_vec(i), error_train(i), error_val(i));
 end
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 8: Validation for Selecting Lambda. Program paused. Press enter to continue.\n');
 pause;
