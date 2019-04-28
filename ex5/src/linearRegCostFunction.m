@@ -29,10 +29,12 @@ J = 1/(2 * m) * costSum + ( lambda / (2 * m) * regSum );
 
 
 % Gradient
-partSum = sum(X .* (h_subscript_theta - y) );
-grad = 1/m * partSum;
+% y is 10x1, X is 10x3
+partSum = (h_subscript_theta - y)' * X;
+grad = 1/m .* partSum;
 
 % regularization from θ(1), all rows, from column 2
+grad
 grad(: ,2:length(grad)) = grad(: ,2:length(grad)) + ( lambda / m ) * theta( 2:length(theta) )';
 
 
