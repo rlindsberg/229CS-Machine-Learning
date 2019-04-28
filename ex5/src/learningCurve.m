@@ -65,14 +65,12 @@ for n=1:m
     theta_subscript_train = trainLinearReg(X_subscript_train, y_subscript_train, lambda);
 
     % compute cost
-    JAndGrad_subscript_train = linearRegCostFunction(X_subscript_train, y_subscript_train, theta_subscript_train, 0)
-    J_subscript_train = JAndGrad_subscript_train(1);
+    J_subscript_train = linearRegCostFunction(X_subscript_train, y_subscript_train, theta_subscript_train, 0);
     error_train(n) = J_subscript_train;
 
     % Cost, cv set
     % test trained theta
-    JAndGrad_subscript_cv = linearRegCostFunction(Xval, yval, theta_subscript_cv, 0)
-    J_subscript_cv = JAndGrad_subscript_cv(1);
+    J_subscript_cv = linearRegCostFunction(Xval, yval, theta_subscript_train, 0)
     error_val(n) = J_subscript_cv;
 
 
