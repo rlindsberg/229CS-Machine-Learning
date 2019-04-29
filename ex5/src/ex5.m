@@ -134,6 +134,16 @@ p = 8;
 
 % Map X onto Polynomial Features and Normalize
 X_poly = polyFeatures(X, p);
+
+% For this part of the exercise, you will be using a polynomial of degree 8.
+%   It turns out that if we run the training directly on the projected data,
+%   will not work well as the features would be badly scaled (e.g., an example with x = 40
+%   will now have a feature x8 = 408 = 6.5 * 10^12).
+%   Therefore, we will need to use feature normalization.
+
+% FEATURENORMALIZE(X) returns a normalized version of X where
+%   the mean value of each feature is 0 and the standard deviation
+%   is 1.
 [X_poly, mu, sigma] = featureNormalize(X_poly);  % Normalize
 X_poly = [ones(m, 1), X_poly];                   % Add Ones
 
