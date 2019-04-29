@@ -48,12 +48,12 @@ for n = 1:length(lambda_vec)
     theta_subscript_train = trainLinearReg(X, y, lambda_vec(n));
 
     % compute cost
-    J_subscript_train = linearRegCostFunction(X, y, theta_subscript_train, lambda_vec(n));
+    J_subscript_train = linearRegCostFunction(X, y, theta_subscript_train, 0);
     error_train(n) = J_subscript_train;
 
     % Cost, cv set
     % test trained theta
-    J_subscript_cv = linearRegCostFunction(Xval, yval, theta_subscript_train, lambda_vec(n))
+    J_subscript_cv = linearRegCostFunction(Xval, yval, theta_subscript_train, 0);
     error_val(n) = J_subscript_cv;
 
 
