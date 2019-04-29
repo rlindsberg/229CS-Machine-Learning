@@ -17,6 +17,12 @@ X_poly = zeros(numel(X), p);
 
 
 
+% when a training set X of size m × 1 is passed into the function, the function should return a m×p matrix X_poly
+% Now we have mapped features to a higher dimension.
+% Part 6 of ex5.m will apply it to the training set, the test set, and the cross validation set (haven’t been used yet).
+for j = 1:p
+    X_poly(:, j) = X .^ j;
+end
 
 
 
