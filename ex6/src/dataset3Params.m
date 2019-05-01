@@ -55,6 +55,15 @@ for i = 1:length(C)
     end
 end
 
+% we want to use the C and sigma combination when err is at its lowest
+% sort results matrix
+results_acd = sortrows(results, 3);
+
+C = results_acd(1, 1);
+sigma = results_acd(1, 2);
+
+
+
 % =========================================================================
 
 end
