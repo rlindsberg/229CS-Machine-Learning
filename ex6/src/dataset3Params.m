@@ -27,6 +27,7 @@ sigma = 0.3;
 
 % results is 64x3. 64 st. combinations and 3 columns: C, sigma, err
 results = zeros(64,3);
+results_row_index = 0;
 C = [0.01 0.03 0.1 0.3 1 3 10 30];
 sigma = [0.01 0.03 0.1 0.3 1 3 10 30];
 
@@ -47,7 +48,9 @@ for i = 1:length(C)
         prediction_error = mean(double(predictions ~= yval));
 
         % writes to the corresponding row in results matrix
-        results((i * j + 1), : ) = [C_subscript_i, sigma_subscript_j, prediction_error]
+        results_row_index ++;
+        results_row_index
+        results(results_row_index, : ) = [C_subscript_i, sigma_subscript_j, prediction_error]
 
     end
 end
