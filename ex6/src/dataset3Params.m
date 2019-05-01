@@ -34,6 +34,11 @@ for i = 1:length(C)
     C_subscript_i = C(i);
     for j = 1:length(sigma)
         sigma_subscript_j = sigma(j);
+        % [model] = svmTrain(X, Y, C, kernelFunction, tol, max_passes)
+        kernelFunction = @(x1, x2) gaussianKernel(x1, x2, sigma_subscript_j);
+        model = svmTrain(X, y, C_subscript_i, kernelFunction);
+        predictions = svmPredict(model, Xval);
+        prediction_error = mean(double(predictions ~= yval));
 
 
 
