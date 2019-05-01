@@ -25,7 +25,15 @@ sigma = 0.3;
 
 
 
+% results is 64x3. 64 st. combinations and 3 columns: C, sigma, err
+results = zeros(64,3);
+C = [0.01 0.03 0.1 0.3 1 3 10 30];
+sigma = [0.01 0.03 0.1 0.3 1 3 10 30];
 
+for i = 1:length(C)
+    C_subscript_i = C(i);
+    for j = 1:length(sigma)
+        sigma_subscript_j = sigma(j);
 
 
 
