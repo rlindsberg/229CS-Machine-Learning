@@ -40,7 +40,11 @@ for i = 1:length(C)
         predictions = svmPredict(model, Xval);
         prediction_error = mean(double(predictions ~= yval));
 
+        % writes to the corresponding row in results matrix
+        results((i * j + 1), : ) = [C_subscript_i, sigma_subscript_j, prediction_error]
 
+    end
+end
 
 % =========================================================================
 
