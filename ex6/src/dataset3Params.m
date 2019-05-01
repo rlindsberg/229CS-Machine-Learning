@@ -44,7 +44,10 @@ for i = 1:length(C)
         % [model] = svmTrain(X, Y, C, kernelFunction, tol, max_passes)
         kernelFunction = @(x1, x2) gaussianKernel(x1, x2, sigma_subscript_j);
         model = svmTrain(X, y, C_subscript_i, kernelFunction);
+        % use the svmPredict function to generate the predictions for the cross validation set
         predictions = svmPredict(model, Xval);
+        % predictions is a vector containing all the predictions from the SVM,
+        %   and yval are the true labels from the cross validation set
         prediction_error = mean(double(predictions ~= yval));
 
         % writes to the corresponding row in results matrix
@@ -57,7 +60,7 @@ end
 
 % we want to use the C and sigma combination when err is at its lowest
 % sort results matrix
-results_acd = sortrows(results, 3);
+results_acd = sortrows(results, 3)
 
 C = results_acd(1, 1);
 sigma = results_acd(1, 2);
