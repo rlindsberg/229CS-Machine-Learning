@@ -49,8 +49,8 @@ x = zeros(n, 1);
 %
 
 
-
-
+% the node at word_indices should be set to 1, others should be set to 0
+x(word_indices) = 1;
 
 
 
