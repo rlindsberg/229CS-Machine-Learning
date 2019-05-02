@@ -37,7 +37,7 @@ fprintf('Word Indices: \n');
 fprintf(' %d', word_indices);
 fprintf('\n\n');
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 1: Email Preprocessing. Program paused. Press enter to continue.\n');
 pause;
 
 %% ==================== Part 2: Feature Extraction ====================
@@ -56,7 +56,7 @@ features      = emailFeatures(word_indices);
 fprintf('Length of feature vector: %d\n', length(features));
 fprintf('Number of non-zero entries: %d\n', sum(features > 0));
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Part 2: Feature Extraction. Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 3: Train Linear SVM for Spam Classification ========
@@ -76,6 +76,7 @@ model = svmTrain(X, y, C, @linearKernel);
 p = svmPredict(model, X);
 
 fprintf('Training Accuracy: %f\n', mean(double(p == y)) * 100);
+fprintf('Part 3: Train Linear SVM for Spam Classification Done\n');
 
 %% =================== Part 4: Test Spam Classification ================
 %  After training the classifier, we can evaluate it on a test set. We have
@@ -90,6 +91,7 @@ fprintf('\nEvaluating the trained Linear SVM on a test set ...\n')
 p = svmPredict(model, Xtest);
 
 fprintf('Test Accuracy: %f\n', mean(double(p == ytest)) * 100);
+fprintf('Part 4: Test Spam Classification\n');
 pause;
 
 
@@ -111,7 +113,7 @@ for i = 1:15
 end
 
 fprintf('\n\n');
-fprintf('\nProgram paused. Press enter to continue.\n');
+fprintf('\nPart 5: Top Predictors of Spam. Program paused. Press enter to continue.\n');
 pause;
 
 %% =================== Part 6: Try Your Own Emails =====================
@@ -135,3 +137,4 @@ p = svmPredict(model, x);
 
 fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);
 fprintf('(1 indicates spam, 0 indicates not spam)\n\n');
+fprintf('Part 6: Try Your Own Emails. All Done!\n');
