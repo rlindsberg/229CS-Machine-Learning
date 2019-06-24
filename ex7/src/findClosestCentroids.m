@@ -25,7 +25,8 @@ idx = zeros(size(X,1), 1);
 
 shortestPath = 0;
 
-for i = 1:3
+for i = 1:size(X,1)
+
     sprintf('Testing %d', i)
 
     shortestPathSquared = (X(i,1) - centroids(1))^2 + (X(1,2) - centroids(1))^2;
