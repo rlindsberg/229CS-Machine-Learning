@@ -29,15 +29,14 @@ for i = 1:size(X,1)
 
     sprintf('Testing %d', i)
 
-    shortestPathSquared = (X(i,1) - centroids(1))^2 + (X(1,2) - centroids(1))^2;
+    shortestPathSquared = sum( (X(i,:) - centroids(1,:)).^2 );
     shortestPath = sqrt(shortestPathSquared);
-    idx(i) = 1;
+    idx(i,1) = 1;
     sprintf('shortestPath is %f\n', shortestPath)
 
-
-    for j = 1:size(centroids)
+    for j = 2:K
         sprintf('\n Inner loop begins\n')
-        distanceSquared = (X(i,1) - centroids(j,1))^2 + (X(i,2) - centroids(j,2))^2;
+        distanceSquared = sum( (X(i,:) - centroids(j,:)).^2 );
         sprintf('The X coordinates are %d, %d', X(i), X(1))
 
         distance = sqrt(distanceSquared);
@@ -46,7 +45,7 @@ for i = 1:size(X,1)
             sprintf('\n******** Found a shorter path!!!\n')
             shortestPath = distance
             sprintf('********\n\n')
-            idx(i) = j;
+            idx(i,1) = j;
         endif
     end
 end
