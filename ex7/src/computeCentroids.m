@@ -28,8 +28,12 @@ centroids = zeros(K, n);
 
 
 
-
-
+% find pixels that belongs to the same centroid, loop centroids
+for i=1:K
+    pixelsThatBelongsToCentroidI = idx == i; %vector where the pixels has the value 1
+    allPixels = X .* pixelsThatBelongsToCentroidI; %mask pixels that do not belong to the centroid i
+    centroids(i,:) = sum(allPixels) ./ sum(pixelsThatBelongsToCentroidI); %calculate mean and update centroids
+end
 
 
 
@@ -37,4 +41,3 @@ centroids = zeros(K, n);
 
 
 end
-
