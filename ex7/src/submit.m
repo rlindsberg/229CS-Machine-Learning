@@ -56,5 +56,5 @@ function out = output(partId, auxstring)
   elseif partId == '5'
     X_rec = recoverData(X(:,1:5), Z, 5);
     out = sprintf('%0.5f ', X_rec(:));
-  end 
+  end
 end
