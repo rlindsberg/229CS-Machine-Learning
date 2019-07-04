@@ -73,5 +73,5 @@ function out = output(partId, auxstring)
     [J, grad] = cofiCostFunc(params, Y, R, n_u, n_m, ...
                              n, 1.5);
     out = sprintf('%0.5f ', grad(:));
-  end 
+  end
 end
