@@ -25,13 +25,25 @@ for epsilon = min(pval):stepsize:max(pval)
 
 
 
+%select the threshold ε using the F1 score on a cross validation set
 
+%get anomaly vector
+predictions = (pval < epsilon);
 
+tpVector = (predictions == 1) & (yval == 1);
+tp = sum(tpVector);
 
+fpVector = (predictions == 1) & (yval == 0);
+fp = sum(fpVector);
 
+fnVector = (predictions == 0) & (yval == 1);
+fn = sum(fnVector);
 
+precision = tp / (tp + fp);
+recall = tp / (tp + fn);
 
-
+%compute F1
+F1 = 2 * precision * recall / (precision + recall);
 
 
 
