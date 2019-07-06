@@ -42,16 +42,9 @@ Theta_grad = zeros(size(Theta));
 
 
 
-
-
-
-
-
-
-
-
-
-
+%Y is 5x4
+errorMatrix = (X * Theta' - Y) .^2 .* (R == 1);
+J = sum(errorMatrix(:)) / 2
 
 
 
