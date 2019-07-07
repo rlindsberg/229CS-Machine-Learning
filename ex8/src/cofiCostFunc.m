@@ -44,7 +44,7 @@ Theta_grad = zeros(size(Theta));
 %Collaborative filtering cost function
 %Y is 5x4
 errorMatrix = (X * Theta' - Y) .^2 .* (R == 1);
-J = sum(errorMatrix(:)) / 2
+J = sum(errorMatrix(:)) / 2;
 
 
 %Collaborative filtering gradient
@@ -66,7 +66,12 @@ Theta_grad = gradientMatrix' * X ;
 
 
 %Regularized cost function
-J = J + sum(sum(Theta .^ 2)) * lambda / 2 + sum(sum(X .^ 2)) *lambda / 2;
+J = J + sum(sum(Theta .^ 2)) * lambda / 2 + sum(sum(X .^ 2)) *lambda / 2
+
+
+%Regularized gradient
+X_grad = X_grad + lambda * X;
+Theta_grad = Theta_grad + lambda * Theta;
 
 
 
