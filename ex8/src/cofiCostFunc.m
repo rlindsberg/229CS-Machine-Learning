@@ -41,10 +41,28 @@ Theta_grad = zeros(size(Theta));
 %
 
 
-
+%Collaborative filtering cost function
 %Y is 5x4
 errorMatrix = (X * Theta' - Y) .^2 .* (R == 1);
 J = sum(errorMatrix(:)) / 2
+
+
+%Collaborative filtering gradient
+
+% size(X) 4x5
+% size(Theta) 3x5
+% size(Y) 4x3
+% size(X * Theta' - Y) 4x3
+%size((X * Theta' - Y) * Theta) 4x5
+
+%gradientMatrix is 4x3
+gradientMatrix = (X * Theta' - Y) .* (R == 1);
+
+%4x3 * 3x5
+X_grad = gradientMatrix * Theta;
+
+%3x4 * 4x5
+Theta_grad = gradientMatrix' * X ;
 
 
 
