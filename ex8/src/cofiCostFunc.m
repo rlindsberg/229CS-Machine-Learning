@@ -65,6 +65,10 @@ X_grad = gradientMatrix * Theta;
 Theta_grad = gradientMatrix' * X ;
 
 
+%Regularized cost function
+J = J + sum(sum(Theta .^ 2)) * lambda / 2 + sum(sum(X .^ 2)) *lambda / 2;
+
+
 
 % =============================================================
 
